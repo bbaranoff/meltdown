@@ -12,13 +12,13 @@ static int show_offset(struct seq_file *m, void *v) {
 static int proc_open(struct inode *inode, struct file *file) {
   return single_open(file, show_offset, NULL);
 }
-static struct file_operations fops = {
-    .owner = THIS_MODULE,
-    .open = proc_open,
-    .release = single_release,
-    .read = seq_read,
-    .llseek = seq_lseek,
+static const struct proc_ops  fops = {
+        .proc_open      = proc_open,
+        .proc_read      = seq_read,
+        .proc_lseek     = seq_lseek,
+        .proc_release   = seq_release,
 };
+
 
 static int __init kaslr_init(void) {
   struct proc_dir_entry *entry;
