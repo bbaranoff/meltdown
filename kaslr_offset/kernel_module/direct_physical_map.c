@@ -16,7 +16,7 @@ static const struct proc_ops  fops = {
         .proc_open      = proc_open,
         .proc_read      = seq_read,
         .proc_lseek     = seq_lseek,
-        .proc_release   = seq_release,
+        .proc_release   = seq_release
 };
 
 
